@@ -1,19 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const myElement = (
-    <table>
-      <tr>
-        <th>Name</th>
-      </tr>
-      <tr>
-        <td>John</td>
-      </tr>
-      <tr>
-        <td>Elsa</td>
-      </tr>
-    </table>
-  );
+function Car() {
+    return <h2>Hi, I am a car!</h2>
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(myElement);
+root.render(<Car />);
