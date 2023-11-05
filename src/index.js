@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-function Car() {
-    return <h2>I am a car!</h2>
-}
+import Car from './Car';
 
 function Garage() {
     return (
