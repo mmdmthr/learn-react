@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom/client';
 import Car from './Car';
 
 function Football() {
-    const shoot = (a) => {
-        alert(a);
+    const shoot = (a, b) => {
+        alert(b.type);
+        /*
+        'b' represents the React event that triggered the function,
+        in this case the 'click' event
+        */
     }
 
     return (
-        <button onClick={() => shoot("Goal!")}>Take the shoot!</button>
+        <button onClick={(event) => shoot("Goal!", event)}>Take the shoot!</button>
     )
 }
 
