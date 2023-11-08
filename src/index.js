@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client';
 import Car from './Car';
 
 function Garage() {
-    const carName = "Ford"
+    const carInfo = { name: "Ford", model: "Mustang"};
     return (
         <>
             <h1>Who lives in my garage?</h1>
-            <Car brand={ carName }/>
+            <Car brand={ carInfo }/>
         </>
     )
 }
