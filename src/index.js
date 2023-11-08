@@ -2,38 +2,19 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 function MyForm() {
-    const [inputs, setInputs] = useState('');
+    const [myCar, setMyCar] = useState("Volvo");
 
     const handleChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setInputs(values => ({...values, [name]: value}));
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert(inputs.username);
+        setMyCar(e.target.value)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>Enter your name:
-                <input 
-                    type='text'
-                    name='username' 
-                    value={inputs.username || ''}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>Enter your age:
-                <input 
-                    type='number'
-                    name='age' 
-                    value={inputs.age || ''}
-                    onChange={handleChange}
-                />
-            </label>
-            <input type='submit' />
+        <form>
+            <select value={myCar} onChange={handleChange}>
+                <option value="Ford">Ford</option>
+                <option value="Volvo">Volvo</option>
+                <option value="Fiat">Fiat</option>
+            </select>
         </form>
     )
 }
