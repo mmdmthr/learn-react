@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import Car from './Car';
 
 function Football() {
-    const shoot = () => {
-        alert("Great Shot!");
+    const shoot = (a) => {
+        alert(a);
     }
 
     return (
-        <button onClick={shoot}>Take the shoot!</button>
+        <button onClick={() => shoot("Goal!")}>Take the shoot!</button>
     )
 }
 
