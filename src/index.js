@@ -1,24 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import Car from './Car';
 
-function Garage() {
-    const cars = [
-        { id: 1, brand: 'Ford'},
-        { id: 1, brand: 'BMW'},
-        { id: 1, brand: 'Audi'}
-    ];
+function MyForm() {
+    const [name, setName] = useState('');
+
     return (
-        <>
-            <h1>Who lives in my garage?</h1>
-            <ul>
-                {cars.map((car) => (
-                    <Car key={car.id} brand={car.brand} />
-                ))}
-            </ul>
-        </>
+        <form>
+            <h1>{ name }</h1>
+            <label>Enter your name:
+                <input 
+                    type='text' 
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
+            </label>
+        </form>
     )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
+root.render(<MyForm />);
