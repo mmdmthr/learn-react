@@ -1,22 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Car from './Car';
 
-function MissedGoal() {
-    return <h3>Missed!</h3>;
-}
-
-function MadeGoal() {
-    return <h3>Goal!</h3>;
-}
-
-function Goal(props) {
-    const isGoal = props.isGoal;
+function Garage() {
+    const cars = ['Ford', 'BMW', 'Audi'];
     return (
         <>
-            { isGoal ? <MadeGoal /> : <MissedGoal /> }
+            <h1>Who lives in my garage?</h1>
+            <ul>
+                {cars.map((car) => (
+                    <Car brand={car} />
+                ))}
+            </ul>
         </>
     )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Goal isGoal={false} />);
+root.render(<Garage />);
