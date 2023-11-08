@@ -1,21 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-function MissedGoal() {
-    return <h3>Missed!</h3>;
+function Garage(props) {
+    const cars = props.cars;
+    return (
+        <>
+            <h1>Garage</h1>
+            {cars.length > 0 &&
+                <h2>
+                    You have {cars.length} cars in your garage.
+                </h2>
+            }
+        </>
+    )
 }
 
-function MadeGoal() {
-    return <h3>Goal!</h3>;
-}
-
-function Goal(props) {
-    const isGoal = props.isGoal;
-    if (isGoal) {
-        return <MadeGoal />;
-    }
-    return <MissedGoal />;
-}
-
+const cars = ['Ford', 'BMW', 'Audi'];
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Goal isGoal={true} />);
+root.render(<Garage cars={cars} />);
