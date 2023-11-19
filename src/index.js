@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useCallback, useReducer, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Todos from "./Todos";
 
@@ -7,12 +7,12 @@ const App = () => {
     const [todos, setTodos] = useState([]);
 
     const increment = () => {
-        setCount(count + 1);
+        setCount((count) => count + 1);
     };
     
-    const addTodo = () => {
-        setTodos([...todos, "New Todo"]);
-    };
+    const addTodo = useCallback(() => {
+        setTodos((todos) => [...todos, "New Todo"]);
+    }, [todos]);
 
     return (
         <>
