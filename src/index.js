@@ -1,23 +1,57 @@
-import { useState, useEffect, useRef } from "react";
+import { useReducer } from "react";
 import ReactDOM from "react-dom/client";
 
-function App() {
-    const inputElement = useRef();
-    
-    const focusInput = () => {
-        inputElement.current.focus();
+const initialTodos = [
+    {
+        id: 1,
+        title: "Todo 1",
+        complete: false,
+    },
+    {
+        id: 2,
+        title: "Todo 2",
+        complete: false,
+    },
+];
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "COMPLETE":
+            return state.map((todo) => {
+                if (todo.id === action.id) {
+                    return { ...todo, complete: true };
+                }
+                return todo;
+            });
+        default:
+            return state;
     }
+};
+
+function Todos() {
+    const [todos, dispatch] = useReducer(reducer, initialTodos);
+
+    const handleComplete = (todo) => {
+        dispatch({ type: "COMPLETE", id: todo.id });
+    };
 
     return (
         <>
-            <input
-                type="text"
-                ref={inputElement}
-            />
-            <button onClick={focusInput}>Focus Input</button>
+            {todos.map((todo) => (
+                <div key={todo.id}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={todo.complete}
+                            onChange={() => handleComplete(todo)}
+                        />
+                        {todo.title}
+                    </label>
+                </div>
+            ))}
         </>
     )
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Todos />);
